@@ -1,0 +1,33 @@
+<hazelcast xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+                               http://www.hazelcast.com/schema/config/hazelcast-config-3.11.xsd"
+           xmlns="http://www.hazelcast.com/schema/config">
+    <properties>
+        <property name="hazelcast.diagnostics.enabled">true</property>
+        <property name="hazelcast.discovery.enabled">true</property>
+    </properties>
+
+    <network>
+        <join>
+            <tcp-ip enabled="false"></tcp-ip>
+            <multicast enabled="false"/>
+            <aws enabled="false" />
+            <discovery-strategies>
+                <!-- class equals to the DiscoveryStrategy not the factory! -->
+                <discovery-strategy enabled="true" class="com.hazelcast.aws.AwsDiscoveryStrategy">
+                    <properties>
+                        <property name="access-key">AKIAJV7HPGRVNPHRQ75Q</property>
+                        <property name="secret-key">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</property>
+                        <!--<property name="iam-role">s3access</property>-->
+                        <property name="region">eu-west-1</property>
+                        <!--<property name="host-header">ec2.amazonaws.com</property>-->
+                        <property name="security-group-name">D7001DLab2</property>
+                        <property name="tag-key">type</property>
+                        <property name="tag-value">hz-node</property>
+                        <property name="hz-port">5701-5708</property>
+                    </properties>
+                </discovery-strategy>
+            </discovery-strategies>
+        </join>
+    </network>
+</hazelcast>
