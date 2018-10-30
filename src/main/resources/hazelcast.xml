@@ -16,8 +16,8 @@
                 <!-- class equals to the DiscoveryStrategy not the factory! -->
                 <discovery-strategy enabled="true" class="com.hazelcast.aws.AwsDiscoveryStrategy">
                     <properties>
-                        <property name="access-key">AKIAJV7HPGRVNPHRQ75Q</property>
-                        <property name="secret-key">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</property>
+                        <property name="access-key">xxxx</property>
+                        <property name="secret-key">xxxx</property>
                         <!--<property name="iam-role">s3access</property>-->
                         <property name="region">eu-west-1</property>
                         <!--<property name="host-header">ec2.amazonaws.com</property>-->
