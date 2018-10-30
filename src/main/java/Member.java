@@ -9,13 +9,6 @@ public class Member {
 
     public static void main(String[] args) {
         AppUtil.loadProperties();
-
-        int[] data = AppUtil.generateBinaryRandomAddress(10);
-        for (int i = 0; i < data.length; i++) {
-            System.out.print(data[i]);
-        }
-        //System.out.println(AppUtil.generateBinaryRandomAddress(10));
-
-        //Hazelcast.newHazelcastInstance();
+        Hazelcast.newHazelcastInstance();
     }
 }
