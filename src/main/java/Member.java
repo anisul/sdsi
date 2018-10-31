@@ -1,5 +1,6 @@
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+import core.NodeFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,9 @@ public class Member extends Application {
         AppUtil.loadProperties();
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
         AppUtil.hazelcastInstance = hazelcastInstance;
+        NodeFactory nodeFactory = new NodeFactory();
+        nodeFactory.initialize();
+        nodeFactory.printAllNodes();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/sample.fxml"));
         rootNode = fxmlLoader.load();

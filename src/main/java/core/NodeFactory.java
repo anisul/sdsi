@@ -19,6 +19,7 @@ public class NodeFactory {
             Node n = new Node(i);
             nodes.add(n);
         }
+        System.out.println("Created " + AppUtil.peerCount + " nodes.");
     }
 
     /*
@@ -82,5 +83,17 @@ public class NodeFactory {
      */
     public static List<Node> getNodes() {
         return nodes;
+    }
+
+    /**
+     * Prints all the node with bins' detail
+     */
+    public void printAllNodes() {
+        for (int i = 0; i < nodes.size(); i++) {
+            System.out.println("In Node-" + nodes.get(i).getId() + ": ") ;
+            for (int j = 0; j < nodes.get(i).getBins().size(); j++) {
+                nodes.get(i).getBins().get(j).printBin();
+            }
+        }
     }
 }

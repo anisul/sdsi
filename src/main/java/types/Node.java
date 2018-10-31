@@ -15,6 +15,7 @@ public class Node {
             Bin b = new Bin();
             bins.add(b);
         }
+        System.out.println("Created " + AppUtil.chunkCount + " bins in node: " + this.id);
     }
 
     public List<Bin> getBins() {

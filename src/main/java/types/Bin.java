@@ -8,6 +8,7 @@ public class Bin {
 
     public Bin() {
         this.address = AppUtil.generateBinaryRandomAddress(AppUtil.lengthOfData);
+        //printBin();
     }
 
     public int[] getAddress() {
@@ -24,5 +25,18 @@ public class Bin {
 
     public void setData(int[] data) {
         this.data = data;
+    }
+
+    public void printBin() {
+        for (int i = 0; i < AppUtil.lengthOfData; i++) {
+            System.out.print(this.address[i]);
+        }
+        System.out.print("---");
+
+        for (int i = 0; i < AppUtil.lengthOfData; i++) {
+            System.out.print(this.data[i]);
+        }
+
+        System.out.println("");
     }
 }
