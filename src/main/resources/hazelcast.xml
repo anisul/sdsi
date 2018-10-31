@@ -2,7 +2,7 @@
            xsi:schemaLocation="http://www.hazelcast.com/schema/config
                                http://www.hazelcast.com/schema/config/hazelcast-config-3.11.xsd"
            xmlns="http://www.hazelcast.com/schema/config">
-    <properties>
+    <!--<properties>
         <property name="hazelcast.diagnostics.enabled">true</property>
         <property name="hazelcast.discovery.enabled">true</property>
     </properties>
@@ -13,14 +13,14 @@
             <multicast enabled="false"/>
             <aws enabled="false" />
             <discovery-strategies>
-                <!-- class equals to the DiscoveryStrategy not the factory! -->
+                &lt;!&ndash; class equals to the DiscoveryStrategy not the factory! &ndash;&gt;
                 <discovery-strategy enabled="true" class="com.hazelcast.aws.AwsDiscoveryStrategy">
                     <properties>
-                        <property name="access-key">xxxx</property>
-                        <property name="secret-key">xxxx</property>
-                        <!--<property name="iam-role">s3access</property>-->
+                        <property name="access-key">AKIAJV7HPGRVNPHRQ75Q</property>
+                        <property name="secret-key">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</property>
+                        &lt;!&ndash;<property name="iam-role">s3access</property>&ndash;&gt;
                         <property name="region">eu-west-1</property>
-                        <!--<property name="host-header">ec2.amazonaws.com</property>-->
+                        &lt;!&ndash;<property name="host-header">ec2.amazonaws.com</property>&ndash;&gt;
                         <property name="security-group-name">D7001DLab2</property>
                         <property name="tag-key">type</property>
                         <property name="tag-value">hz-node</property>
@@ -29,5 +29,5 @@
                 </discovery-strategy>
             </discovery-strategies>
         </join>
-    </network>
+    </network>-->
 </hazelcast>

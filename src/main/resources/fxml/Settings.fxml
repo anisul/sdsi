@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.SettingsController">
+  <children>
+    <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <GridPane hgap="5.0" vgap="5.0">
+          <children>
+            <TextField id="commandField" fx:id="numberOfChunkField" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <TextField id="loopCounterField" fx:id="numberOfPeerField" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <GridPane id="GridPane" GridPane.columnIndex="0" GridPane.rowIndex="1">
+              <children>
+                <GridPane id="GridPane" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <children>
+                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Number of Chunk:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Number of Peer:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="Hamming Threshold:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <TextField id="loopCounterField" fx:id="hammingDistanceField" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="205.0" text="Binary Conversion Threshold:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <TextField id="loopCounterField" fx:id="binaryConversionThresholdField" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="settingSaveButton" mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="39.0" prefWidth="96.0" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="TOP">
+              <GridPane.margin>
+                <Insets top="10.0" />
+              </GridPane.margin>
+            </Button>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Length of Data:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+            <TextField id="commandField" fx:id="lengthOfDataField" disable="true" editable="false" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="205.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="457.0" minWidth="10.0" prefWidth="318.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="67.0" />
+          </columnConstraints>
+          <padding>
+            <Insets bottom="10.0" top="10.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="143.0" minHeight="6.0" prefHeight="47.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="272.0" minHeight="3.0" prefHeight="47.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="272.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="272.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </center>
+    </BorderPane>
+  </children>
+</AnchorPane>

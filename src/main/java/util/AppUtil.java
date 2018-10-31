@@ -1,5 +1,7 @@
 package util;
 
+import com.hazelcast.core.HazelcastInstance;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,6 +15,8 @@ public class AppUtil {
     public static int peerCount;
     public static int hammingThreshold;
     public static int binaryConversionThreshold;
+
+    public static HazelcastInstance hazelcastInstance;
 
     public static void loadProperties(){
         lengthOfData = Integer.parseInt(rb.getString("node.data.length"));
