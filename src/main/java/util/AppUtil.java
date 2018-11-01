@@ -4,6 +4,7 @@ import com.hazelcast.core.HazelcastInstance;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -151,7 +152,7 @@ public class AppUtil {
         for (int i = 0; i < input.length; i++) {
             System.out.print(input[i]);
         }
-        System.out.println("\n--------------");
+        System.out.println("\n--------------\n");
     }
 
     public static int[] copyArray(int[] input) {
@@ -170,5 +171,15 @@ public class AppUtil {
             output.append(String.valueOf(input[i]));
         }
         return output.toString();
+    }
+
+    public static String intArrayToCommaSeparatedString(int[] input) {
+        return Arrays.toString(input);
+    }
+
+    public static int[] commaSeparatedStringToIntArray(String input) {
+        int[] output = Arrays.stream(input.substring(1, input.length()-1).split(","))
+                .map(String::trim).mapToInt(Integer::parseInt).toArray();
+        return output;
     }
 }

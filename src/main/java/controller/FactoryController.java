@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import types.HzResult;
 import util.AppUtil;
 
 public class FactoryController {
@@ -24,6 +25,7 @@ public class FactoryController {
 
     NodeFactory nodeFactory = new NodeFactory();
     PublisherFactory publisherFactory = new PublisherFactory();
+    HzResult hzResult = new HzResult();
 
     @FXML
     private void initialize() {
@@ -31,13 +33,19 @@ public class FactoryController {
         outputTextarea.appendText("System is ready to perform.\n");
     }
 
-
     @FXML
     private void handleSearchButtonAction(ActionEvent e) {
         int[] input = AppUtil.stringToIntArray(inputField.getText());
         int[] result;
 
-        if (input.length == AppUtil.lengthOfData) {
+        int[] data = new int[6];
+        data[0] = 1;
+
+        hzResult.addToHzSearchResultList("RESULT-1");
+        publisherFactory.publishSearchTopic(data);
+
+
+        /*if (input.length == AppUtil.lengthOfData) {
             result = nodeFactory.searchWrapper(input);
             if (result == null) {
                 outputTextarea.setText("Nothing found.");
@@ -47,7 +55,7 @@ public class FactoryController {
         } else {
             System.out.println("Invalid data provided.");
             inputField.setText("");
-        }
+        }*/
     }
 
     @FXML
