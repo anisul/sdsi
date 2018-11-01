@@ -12,7 +12,7 @@ public class Node {
     public Node(int id) {
         this.id = id;
         for (int i = 0; i < AppUtil.chunkCount; i++) {
-            Bin b = new Bin();
+            Bin b = new Bin(id, i);
             bins.add(b);
         }
         System.out.println("Created " + AppUtil.chunkCount + " bins in node: " + this.id);

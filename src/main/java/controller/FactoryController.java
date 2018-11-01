@@ -1,10 +1,12 @@
 package controller;
 
+import core.NodeFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import util.AppUtil;
 
 public class FactoryController {
     @FXML
@@ -19,6 +21,8 @@ public class FactoryController {
     @FXML
     private TextArea outputTextarea;
 
+    NodeFactory nodeFactory = new NodeFactory();
+
     @FXML
     private void initialize() {
         outputTextarea.appendText("Intializing.....\n");
@@ -28,11 +32,33 @@ public class FactoryController {
 
     @FXML
     private void handleSearchButtonAction(ActionEvent e) {
+        int[] input = AppUtil.stringToIntArray(inputField.getText());
+        int[] result;
 
+        if (input.length == AppUtil.lengthOfData) {
+            result = nodeFactory.searchWrapper(input);
+            if (result == null) {
+                outputTextarea.setText("Nothing found.");
+            } else {
+                outputTextarea.setText(AppUtil.intArrayToString(result));
+            }
+        } else {
+            System.out.println("Invalid data provided.");
+            inputField.setText("");
+        }
     }
 
     @FXML
     private void handleStoreButtonAction(ActionEvent e) {
+        int[] input = AppUtil.stringToIntArray(inputField.getText());
+
+        if (input.length == AppUtil.lengthOfData) {
+            nodeFactory.store(input);
+            outputTextarea.setText(nodeFactory.printAllNodes().toString());
+        } else {
+            System.out.println("Invalid data provided.");
+            inputField.setText("");
+        }
 
     }
 }

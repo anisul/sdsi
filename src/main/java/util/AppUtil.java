@@ -36,12 +36,16 @@ public class AppUtil {
     * @param lengthOfAddress length of the address
     * @return random binary address of given length
     */
-    public static int[] generateBinaryRandomAddress(int lengthOfAddress) {
+    public static int[] generateBinaryRandomAddress(int lengthOfAddress, int nodeId, int binId, boolean enableBinaryGen) {
         int[] data = new int[lengthOfAddress];
-        Random r = new Random();
+        Random r = new Random(((nodeId * 100) + binId));
 
         for (int i = 0; i < data.length; i++) {
-            data[i] = r.nextInt(2);
+            if (enableBinaryGen) {
+                data[i] = r.nextInt(2);
+            } else {
+                data[i] = r.nextInt(((2 * 5) + 1)) - 5;
+            }
         }
         return data;
     }
@@ -55,7 +59,7 @@ public class AppUtil {
     public static int calculateHammingDistance(int[] data1, int[] data2) {
         int output = 0;
         for (int i = 0; i < data1.length; i++) {
-            if (data1[i] == data2[i]) {
+            if (data1[i] != data2[i]) {
                 output++;
             }
         }
@@ -68,12 +72,13 @@ public class AppUtil {
      * @return bi-polarized address
      */
     public static int[] bipolarConversion(int[] input) {
-        for (int i = 0; i < input.length; i++) {
-            if (input[i] == 0) {
-                input[i] = -1;
+        int[] output = copyArray(input);
+        for (int i = 0; i < output.length; i++) {
+            if (output[i] == 0) {
+                output[i] = -1;
             }
         }
-        return input;
+        return output;
     }
 
     /**
@@ -81,15 +86,16 @@ public class AppUtil {
      * @param input address
      * @return reverse-bi-polarized address
      */
-    public static int[] reverseBipolarConversion(int[] input) {
+    public static int[] binarization(int[] input) {
+        int[] output = copyArray(input);
         for (int i = 0; i < input.length; i++) {
-            if (input[i] >= 0) {
-                input[i] = 1;
+            if (output[i] >= 0) {
+                output[i] = 1;
             } else {
-                input[i] = 0;
+                output[i] = 0;
             }
         }
-        return input;
+        return output;
     }
 
     public static int[] sumMemberResultBitwise(int[][] input, int lengthOfData) {
@@ -113,16 +119,56 @@ public class AppUtil {
      * @param  input2 address2
      * @return bitwise summation of two addresses
      */
-    public static int[] sumTwoEntryBitwise(int[] input1, int[] input2) {
+    public static int[] sumTwoEntryBitwise(int[] input1, int[] input2, boolean enableThreshold) {
         int[] result = new int[input1.length];
 
         int sum;
         for (int i = 0; i < input1.length; i++) {
             sum = input1[i] + input2[i];
-            if (sum < AppUtil.binaryConversionThreshold) {
+            if (enableThreshold) {
+                if ((sum > (-1 * AppUtil.binaryConversionThreshold)) && sum < AppUtil.binaryConversionThreshold ) {
+                    result[i] = sum;
+                }
+            } else {
                 result[i] = sum;
             }
+
         }
         return result;
+    }
+
+    public static int[] stringToIntArray(String input) {
+        int[] output = new int[input.length()];
+
+        for (int i = 0; i < input.length(); i++) {
+            output[i] = Character.digit(input.charAt(i), 10);
+        }
+        return output;
+    }
+
+    public static void printIntArray(int[] input) {
+        System.out.println("\n--------------");
+        for (int i = 0; i < input.length; i++) {
+            System.out.print(input[i]);
+        }
+        System.out.println("\n--------------");
+    }
+
+    public static int[] copyArray(int[] input) {
+        int[] output = new int[input.length];
+
+        for (int i = 0; i < input.length; i++) {
+            output[i] = input[i];
+        }
+        return output;
+    }
+
+    public static String intArrayToString(int[] input) {
+        StringBuffer output = new StringBuffer();
+
+        for (int i = 0; i < input.length; i++) {
+            output.append(String.valueOf(input[i]));
+        }
+        return output.toString();
     }
 }
