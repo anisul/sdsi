@@ -2,12 +2,13 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
 import core.NodeFactory;
+import core.SubscriberFactory;
+import enums.TopicType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import listener.MessageListenerImpl;
 import util.AppUtil;
 
 import java.util.Date;
@@ -28,6 +29,11 @@ public class Member extends Application {
         AppUtil.loadProperties();
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
         AppUtil.hazelcastInstance = hazelcastInstance;
+
+        System.out.println(TopicType.SEARCH.toString());
+
+        SubscriberFactory subscriberFactory = new SubscriberFactory();
+        subscriberFactory.initToSubscribeAllTopic();
 
         /*if (isPublisher) {
             ITopic<Date> topic = hazelcastInstance.getTopic("BEGIN_SEARCH");
