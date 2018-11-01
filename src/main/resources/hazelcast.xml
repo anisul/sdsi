@@ -8,12 +8,13 @@
             <multicast enabled="false">
             </multicast>
             <tcp-ip enabled="true">
-                <member>192.168.0.1-100</member>
+                <member>192.168.0.2</member>
+                <member>192.168.0.3</member>
+                <member>192.168.0.4</member>
+                <member>192.168.0.5</member>
             </tcp-ip>
         </join>
-
-    </network>
-    -->
+    </network>-->
 
     <!--AWS EC2 Auto Discovery CONFIGURATION-->
     <!--<properties>

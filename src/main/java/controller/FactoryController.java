@@ -27,7 +27,7 @@ public class FactoryController {
 
     @FXML
     private void initialize() {
-        outputTextarea.appendText("Intializing.....\n");
+        outputTextarea.appendText("Initializing.....\n");
         outputTextarea.appendText("System is ready to perform.\n");
     }
 
@@ -52,17 +52,14 @@ public class FactoryController {
 
     @FXML
     private void handleStoreButtonAction(ActionEvent e) {
-        /*int[] input = AppUtil.stringToIntArray(inputField.getText());
+        int[] input = AppUtil.stringToIntArray(inputField.getText());
 
         if (input.length == AppUtil.lengthOfData) {
-            nodeFactory.store(input);
+            publisherFactory.publishStoreTopic(input);
             outputTextarea.setText(nodeFactory.printAllNodes().toString());
         } else {
             System.out.println("Invalid data provided.");
             inputField.setText("");
-        }*/
-        int[] publishData = new int[6];
-        publishData[0] = 1;
-        publisherFactory.publishStoreTopic(publishData);
+        }
     }
 }
