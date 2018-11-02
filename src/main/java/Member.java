@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import types.HzAppSetting;
 import util.AppUtil;
 
 import java.util.Date;
@@ -18,37 +19,21 @@ public class Member extends Application {
     private static boolean isPublisher;
 
     public static void main(String[] args) {
-        /*if (args[0].equals("1")) {
-            isPublisher = true;
-        }*/
         Application.launch(args);
     }
 
     @Override
     public void init() throws Exception {
-        AppUtil.loadProperties();
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
         AppUtil.hazelcastInstance = hazelcastInstance;
-
-        System.out.println(TopicType.SEARCH.toString());
+        AppUtil.loadPropertiesFromHzMap();
 
         SubscriberFactory subscriberFactory = new SubscriberFactory();
         subscriberFactory.initToSubscribeAllTopic();
 
-        /*if (isPublisher) {
-            ITopic<Date> topic = hazelcastInstance.getTopic("BEGIN_SEARCH");
-            topic.publish(new Date());
-        } else {
-            ITopic<Date> topic = hazelcastInstance.getTopic("BEGIN_SEARCH");
-            topic.addMessageListener(new MessageListenerImpl());
-            System.out.println("Subscribed to topic BEGIN_SEARCH");
-        }*/
-
-
         NodeFactory nodeFactory = new NodeFactory();
         nodeFactory.initialize();
         nodeFactory.printAllNodesInConsole();
-        //nodeFactory.printAllNodes();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/sample.fxml"));
         rootNode = fxmlLoader.load();

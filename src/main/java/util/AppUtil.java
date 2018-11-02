@@ -1,13 +1,11 @@
 package util;
 
 import com.hazelcast.core.HazelcastInstance;
+import types.HzAppSetting;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Properties;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class AppUtil {
     private static ResourceBundle rb = ResourceBundle.getBundle("app");
@@ -30,6 +28,20 @@ public class AppUtil {
         hammingThreshold = Integer.parseInt(rb.getString("core.hamming.threshold"));
         binaryConversionThreshold = Integer.parseInt(rb.getString("core.binary.conversion.threshold"));
         searchConvergenceUpperBound = lengthOfData/2;
+    }
+
+    public static void loadPropertiesFromHzMap() {
+        Map<String, String> hzMap = hazelcastInstance.getMap("appSettingMap");
+        if (!hzMap.isEmpty()) {
+            lengthOfData = Integer.parseInt(hzMap.get("lengthOfData"));
+            chunkCount = Integer.parseInt(hzMap.get("chunkCount"));
+            peerCount = Integer.parseInt(hzMap.get("peerCount"));
+            hammingThreshold = Integer.parseInt(hzMap.get("hammingThreshold"));
+            binaryConversionThreshold = Integer.parseInt(hzMap.get("binaryConversionThreshold"));
+            searchConvergenceUpperBound = lengthOfData/2;
+        } else {
+            loadProperties();
+        }
     }
 
     /**
