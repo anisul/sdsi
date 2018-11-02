@@ -38,6 +38,8 @@ public class FactoryController {
 
     @FXML
     private void handleSearchButtonAction(ActionEvent e) {
+        long searchStartTime = System.currentTimeMillis();
+
         int[] input = AppUtil.stringToIntArray(inputField.getText());
         int sizeOfCluster = AppUtil.hazelcastInstance.getCluster().getMembers().size();
         boolean hasDiverged = false;
@@ -84,10 +86,12 @@ public class FactoryController {
             }
         }
 
+        long searchFinishTime = System.currentTimeMillis();
+        long searchTime = searchFinishTime - searchStartTime;
         if (!hasDiverged) {
-            outputTextarea.setText(AppUtil.intArrayToString(AppUtil.binarization(result)));
+            outputTextarea.setText("Search converged to: \n" + AppUtil.intArrayToString(AppUtil.binarization(result)) + "\n [time taken - " + String.valueOf(searchTime) + " ms]");
         } else {
-            outputTextarea.setText("Search diverged.");
+            outputTextarea.setText("Search diverged." + "\n [time taken - " + String.valueOf(searchTime) + " ms]");
         }
     }
 

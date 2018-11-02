@@ -49,7 +49,6 @@ public class NodeFactory {
         for (int i = 0; i < nodes.size(); i++) {
             for (int j = 0; j < nodes.get(i).getBins().size(); j++) {
                 int hammingDistance = AppUtil.calculateHammingDistance(nodes.get(i).getBins().get(j).getAddress(), input);
-                AppUtil.printIntArray(nodes.get(i).getBins().get(j).getAddress());
                 if (hammingDistance < AppUtil.hammingThreshold) {
                     if (result == null) {
                         result = new int[input.length];

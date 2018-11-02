@@ -3,18 +3,18 @@
                                http://www.hazelcast.com/schema/config/hazelcast-config-3.11.xsd"
            xmlns="http://www.hazelcast.com/schema/config">
     <!--LOCAL NETWORK CONFIGURATION-->
-    <!--<network>
+    <network>
         <join>
             <multicast enabled="false">
             </multicast>
             <tcp-ip enabled="true">
-                <member>192.168.0.2</member>
-                <member>192.168.0.3</member>
-                <member>192.168.0.4</member>
-                <member>192.168.0.5</member>
+                <member>192.168.1.100</member>
+                <member>192.168.1.101</member>
+                <member>192.168.1.102</member>
+                <member>192.168.1.103</member>
             </tcp-ip>
         </join>
-    </network>-->
+    </network>
 
     <!--AWS EC2 Auto Discovery CONFIGURATION-->
     <!--<properties>
