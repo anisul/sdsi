@@ -14,6 +14,6 @@ public class StoreMessageListenerImpl implements MessageListener<StoreTopic> {
         System.out.println("Received data to store: ");
         AppUtil.printIntArray(message.getMessageObject().getData());
         nodeFactory.store(message.getMessageObject().getData());
-        nodeFactory.printAllNodesInConsole();
+        //nodeFactory.printAllNodesInConsole();
     }
 }

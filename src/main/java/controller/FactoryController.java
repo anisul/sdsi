@@ -80,10 +80,13 @@ public class FactoryController {
                 }
             } else if (hammingDistance == 0) {
                 break;
-            } else if (hammingDistance > AppUtil.searchConvergenceUpperBound) {
+            } else if (hammingDistance >= AppUtil.searchConvergenceUpperBound) {
                 hasDiverged = true;
                 break;
             }
+        }
+        if (hammingDistance >= AppUtil.searchConvergenceUpperBound) {
+            hasDiverged = true;
         }
 
         long searchFinishTime = System.currentTimeMillis();

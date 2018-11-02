@@ -33,7 +33,7 @@ public class Member extends Application {
 
         NodeFactory nodeFactory = new NodeFactory();
         nodeFactory.initialize();
-        nodeFactory.printAllNodesInConsole();
+        //nodeFactory.printAllNodesInConsole();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/sample.fxml"));
         rootNode = fxmlLoader.load();
