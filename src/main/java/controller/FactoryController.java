@@ -111,6 +111,10 @@ public class FactoryController {
         }
     }
 
+    /**
+     * returns cumulated result from hazelcast distributed memory
+     * @return cumulated result
+     */
     private  int[] getCumulatedResultFromHzResultSet() {
         int sizeOfCluster = AppUtil.hazelcastInstance.getCluster().getMembers().size();
         int [][] cumulatedResultArray = new int[sizeOfCluster][AppUtil.lengthOfData];

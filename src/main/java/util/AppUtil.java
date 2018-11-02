@@ -30,6 +30,9 @@ public class AppUtil {
         searchConvergenceUpperBound = lengthOfData/2;
     }
 
+    /**
+     * Load properties from distributed Hazelcast memory map
+     */
     public static void loadPropertiesFromHzMap() {
         Map<String, String> hzMap = hazelcastInstance.getMap("appSettingMap");
         if (!hzMap.isEmpty()) {
@@ -107,6 +110,13 @@ public class AppUtil {
         return output;
     }
 
+
+    /**
+     * sum the member bitwise of a 2D array
+     * @param input input 2D array
+     * @param lengthOfData length of the data in array
+     * @return reverse-bi-polarized address
+     */
     public static int[] sumMemberResultBitwise(int[][] input, int lengthOfData) {
         int[] output = new int[lengthOfData];
         for (int i = 0; i < lengthOfData; i++) {
@@ -146,6 +156,11 @@ public class AppUtil {
         return result;
     }
 
+    /**
+     * converts string into integer array
+     * @param input string input
+     * @return converted integer array
+     */
     public static int[] stringToIntArray(String input) {
         int[] output = new int[input.length()];
 
@@ -163,6 +178,11 @@ public class AppUtil {
         System.out.println("\n--------------\n");
     }
 
+    /**
+     * copy array to another integer array without changing reference
+     * @param input input array
+     * @return copy of input array
+     */
     public static int[] copyArray(int[] input) {
         int[] output = new int[input.length];
 
