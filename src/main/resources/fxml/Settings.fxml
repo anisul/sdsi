@@ -19,7 +19,7 @@
               <children>
                 <GridPane id="GridPane" GridPane.columnIndex="0" GridPane.rowIndex="0">
                   <children>
-                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Number of Chunk:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
+                    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="163.0" text="Number of Chunk (N):" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
                   </children>
                   <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -36,18 +36,18 @@
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Number of Peer:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="Hamming Threshold:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Number of Peer (P):" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="177.0" text="Hamming Threshold (T):" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <TextField id="loopCounterField" fx:id="hammingDistanceField" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="205.0" text="Binary Conversion Threshold:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="205.0" text="Storage Threshold (C):" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <TextField id="loopCounterField" fx:id="binaryConversionThresholdField" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="settingSaveButton" mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="39.0" prefWidth="96.0" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="TOP">
               <GridPane.margin>
                 <Insets top="10.0" />
               </GridPane.margin>
             </Button>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Length of Data:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
-            <TextField id="commandField" fx:id="lengthOfDataField" disable="true" editable="false" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="135.0" text="Length of Data (X):" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+            <TextField id="commandField" fx:id="lengthOfDataField" disable="false" editable="false" prefHeight="39.0" prefWidth="387.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
             <Button fx:id="refreshSettingButton" mnemonicParsing="false" onAction="#onRefreshSettingButtonClick" prefHeight="39.0" prefWidth="96.0" text="Refresh" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="TOP">
               <GridPane.margin>
                 <Insets right="120.0" top="10.0" />

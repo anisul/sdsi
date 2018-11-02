@@ -23,6 +23,9 @@ public class FactoryController {
     @FXML
     private TextArea outputTextarea;
 
+    @FXML
+    private Button generateRndDataButton;
+
     NodeFactory nodeFactory = new NodeFactory();
     PublisherFactory publisherFactory = new PublisherFactory();
     HzResult hzResult = new HzResult();
@@ -37,6 +40,7 @@ public class FactoryController {
     private void handleSearchButtonAction(ActionEvent e) {
         int[] input = AppUtil.stringToIntArray(inputField.getText());
         int sizeOfCluster = AppUtil.hazelcastInstance.getCluster().getMembers().size();
+        boolean hasDiverged = false;
 
         publisherFactory.publishSearchTopic(input);
         while (true) {
@@ -69,19 +73,22 @@ public class FactoryController {
             if (previousHammingDistance == hammingDistance) {
                 terminationFlag++;
                 if (terminationFlag > 100) {
-                    System.out.println("Search Diverged.");
+                    hasDiverged = true;
                     break;
                 }
             } else if (hammingDistance == 0) {
-                System.out.println("Search converged");
                 break;
             } else if (hammingDistance > AppUtil.searchConvergenceUpperBound) {
-                System.out.println("Search Diverged.");
+                hasDiverged = true;
                 break;
             }
         }
 
-        outputTextarea.setText(AppUtil.intArrayToString(AppUtil.binarization(result)));
+        if (!hasDiverged) {
+            outputTextarea.setText(AppUtil.intArrayToString(AppUtil.binarization(result)));
+        } else {
+            outputTextarea.setText("Search diverged.");
+        }
     }
 
     @FXML
@@ -90,7 +97,7 @@ public class FactoryController {
 
         if (input.length == AppUtil.lengthOfData) {
             publisherFactory.publishStoreTopic(input);
-            outputTextarea.setText(nodeFactory.printAllNodes().toString());
+            outputTextarea.setText("Successfully stored data.");
         } else {
             System.out.println("Invalid data provided.");
             inputField.setText("");
@@ -108,5 +115,12 @@ public class FactoryController {
 
         hzResult.getHzSearchResultList().clear();
         return AppUtil.sumMemberResultBitwise(cumulatedResultArray, AppUtil.lengthOfData);
+    }
+
+    @FXML
+    private void onGenerateRndDataClicked(ActionEvent e) {
+        int[] input = AppUtil.generateBinaryRandomAddress(AppUtil.lengthOfData);
+        inputField.setText("");
+        inputField.setText(AppUtil.intArrayToString(input));
     }
 }

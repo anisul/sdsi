@@ -6,8 +6,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.SystemStatusController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SystemStatusController">
   <children>
-    <TextArea fx:id="systemStatusTextarea" prefHeight="400.0" prefWidth="600.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane prefHeight="407.0" prefWidth="600.0">
+         <left>
+            <GridPane prefHeight="407.0" prefWidth="603.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="364.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="371.0" minHeight="10.0" prefHeight="362.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="updateMembersButton" mnemonicParsing="false" onAction="#onUpdateMembersButtonClicked" prefHeight="39.0" prefWidth="565.0" text="Update Member List" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                <TextArea fx:id="systemStatusTextarea" prefHeight="303.0" prefWidth="603.0" wrapText="true" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </left>
+      </BorderPane>
   </children>
 </AnchorPane>

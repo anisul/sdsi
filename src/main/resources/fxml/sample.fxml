@@ -20,11 +20,11 @@
                         <fx:include source="Settings.fxml" />
                     </content>
                 </Tab>
-                <Tab text="Log">
+                <!--<Tab text="Log">
                     <content>
                         <fx:include source="LoggerTab.fxml" />
                     </content>
-                </Tab>
+                </Tab>-->
                 <Tab text="System Status">
                     <content>
                         <fx:include source="SystemStatus.fxml" />

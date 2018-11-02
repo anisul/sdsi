@@ -49,16 +49,12 @@ public class AppUtil {
     * @param lengthOfAddress length of the address
     * @return random binary address of given length
     */
-    public static int[] generateBinaryRandomAddress(int lengthOfAddress, int nodeId, int binId, boolean enableBinaryGen) {
+    public static int[] generateBinaryRandomAddress(int lengthOfAddress) {
         int[] data = new int[lengthOfAddress];
-        Random r = new Random(((nodeId * 100) + binId));
+        Random r = new Random();
 
         for (int i = 0; i < data.length; i++) {
-            if (enableBinaryGen) {
                 data[i] = r.nextInt(2);
-            } else {
-                data[i] = r.nextInt(((2 * 5) + 1)) - 5;
-            }
         }
         return data;
     }

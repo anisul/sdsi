@@ -6,10 +6,8 @@ public class Bin {
     public int[] address = new int[AppUtil.lengthOfData];
     public int[] data = new int[AppUtil.lengthOfData];
 
-    public Bin(int nodeId, int binId) {
-        this.address = AppUtil.generateBinaryRandomAddress(AppUtil.lengthOfData, nodeId, binId, true);
-        this.data = AppUtil.generateBinaryRandomAddress(AppUtil.lengthOfData, nodeId, binId, false);
-        //printBin();
+    public Bin() {
+        this.address = AppUtil.generateBinaryRandomAddress(AppUtil.lengthOfData);
     }
 
     public int[] getAddress() {
