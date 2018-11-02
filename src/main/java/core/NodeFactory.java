@@ -67,7 +67,7 @@ public class NodeFactory {
      * @param input searching data
      * @return reverse bi-polarized search result
      */
-    public int[] searchWrapper(int[] input) {
+    /*public int[] searchWrapper(int[] input) {
         int[] result;
         result = search(input);
         if (result == null) {
@@ -107,7 +107,7 @@ public class NodeFactory {
 
         //System.out.println("Search converge.");
         return AppUtil.binarization(result);
-    }
+    }*/
 
     /**
      * Returns list of nodes in member

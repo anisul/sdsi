@@ -2,5 +2,6 @@ package enums;
 
 public enum TopicType {
     STORE,
-    SEARCH
+    SEARCH,
+    SETTING_CHANGE
 }

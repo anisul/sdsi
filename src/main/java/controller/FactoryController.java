@@ -36,26 +36,52 @@ public class FactoryController {
     @FXML
     private void handleSearchButtonAction(ActionEvent e) {
         int[] input = AppUtil.stringToIntArray(inputField.getText());
-        int[] result;
+        int sizeOfCluster = AppUtil.hazelcastInstance.getCluster().getMembers().size();
 
-        int[] data = new int[6];
-        data[0] = 1;
-
-        hzResult.addToHzSearchResultList("RESULT-1");
-        publisherFactory.publishSearchTopic(data);
-
-
-        /*if (input.length == AppUtil.lengthOfData) {
-            result = nodeFactory.searchWrapper(input);
-            if (result == null) {
-                outputTextarea.setText("Nothing found.");
-            } else {
-                outputTextarea.setText(AppUtil.intArrayToString(result));
+        publisherFactory.publishSearchTopic(input);
+        while (true) {
+            //wait for search results to arrive in distributed memory space
+            if (hzResult.getHzSearchResultList().size() == sizeOfCluster) {
+                break;
             }
-        } else {
-            System.out.println("Invalid data provided.");
-            inputField.setText("");
-        }*/
+        }
+
+        int[] result = getCumulatedResultFromHzResultSet();
+
+        int hammingDistance = AppUtil.calculateHammingDistance(AppUtil.binarization(result), input);
+        int previousHammingDistance;
+        int terminationFlag = 0;
+
+        while (hammingDistance > 0 && hammingDistance < AppUtil.searchConvergenceUpperBound) {
+            int[] previousResult = AppUtil.copyArray(result);
+            publisherFactory.publishSearchTopic(AppUtil.binarization(result));
+            while (true) {
+                //wait for search results to arrive in distributed memory space
+                if (hzResult.getHzSearchResultList().size() == sizeOfCluster) {
+                    break;
+                }
+            }
+            result = getCumulatedResultFromHzResultSet();
+            previousHammingDistance = hammingDistance;
+            hammingDistance = AppUtil.calculateHammingDistance(AppUtil.binarization(result)
+                    , AppUtil.binarization(previousResult));
+
+            if (previousHammingDistance == hammingDistance) {
+                terminationFlag++;
+                if (terminationFlag > 100) {
+                    System.out.println("Search Diverged.");
+                    break;
+                }
+            } else if (hammingDistance == 0) {
+                System.out.println("Search converged");
+                break;
+            } else if (hammingDistance > AppUtil.searchConvergenceUpperBound) {
+                System.out.println("Search Diverged.");
+                break;
+            }
+        }
+
+        outputTextarea.setText(AppUtil.intArrayToString(AppUtil.binarization(result)));
     }
 
     @FXML
@@ -69,5 +95,18 @@ public class FactoryController {
             System.out.println("Invalid data provided.");
             inputField.setText("");
         }
+    }
+
+    private  int[] getCumulatedResultFromHzResultSet() {
+        int sizeOfCluster = AppUtil.hazelcastInstance.getCluster().getMembers().size();
+        int [][] cumulatedResultArray = new int[sizeOfCluster][AppUtil.lengthOfData];
+
+        for (int i = 0; i < hzResult.getHzSearchResultList().size(); i++) {
+            String hzListEntry = hzResult.getHzSearchResultList().get(i);
+            cumulatedResultArray[i] = AppUtil.commaSeparatedStringToIntArray(hzListEntry);
+        }
+
+        hzResult.getHzSearchResultList().clear();
+        return AppUtil.sumMemberResultBitwise(cumulatedResultArray, AppUtil.lengthOfData);
     }
 }

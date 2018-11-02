@@ -18,11 +18,7 @@ public class SearchMessageListenerImpl implements MessageListener<SearchTopic> {
         System.out.println("Received data to search: ");
         AppUtil.printIntArray(input);
 
-        /*String commaSeparatedResult = AppUtil.intArrayToCommaSeparatedString(nodeFactory.search(input));
-        hzResult.addToHzSearchResultList(commaSeparatedResult); ;*/
-
-        System.out.println("");
-        System.out.println("Reading from shared collection:");
-        System.out.println(hzResult.getHzSearchResultList().get(0));
+        String commaSeparatedResult = AppUtil.intArrayToCommaSeparatedString(nodeFactory.search(input));
+        hzResult.addToHzSearchResultList(commaSeparatedResult);
     }
 }

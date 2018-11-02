@@ -4,6 +4,7 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
 import enums.TopicType;
 import types.SearchTopic;
+import types.SettingChangeTopic;
 import types.StoreTopic;
 import util.AppUtil;
 
@@ -23,5 +24,11 @@ public class PublisherFactory {
         searchTopic.setData(data);
         ITopic<SearchTopic> topic = hz.getTopic(TopicType.SEARCH.toString());
         topic.publish(searchTopic);
+    }
+
+    public void publishSettingChangeTopic() {
+        SettingChangeTopic settingChangeTopic = new SettingChangeTopic();
+        ITopic<SettingChangeTopic> topic = hz.getTopic(TopicType.SETTING_CHANGE.toString());
+        topic.publish(settingChangeTopic);
     }
 }
