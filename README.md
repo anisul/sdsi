@@ -77,9 +77,9 @@ with existing cluster configuration.
 java -jar sdsi.jar
 ```
 
-![alt text](https://raw.githubusercontent.com/anisul/sdsi/tree/master/demo/demo1.PNG)
-![alt text](https://raw.githubusercontent.com/anisul/sdsi/tree/master/demo/demo2.PNG)
-![alt text](https://raw.githubusercontent.com/anisul/sdsi/tree/master/demo/demo3.png)
+![alt text](https://raw.githubusercontent.com/anisul/sdsi/master/demo/demo1.PNG)
+![alt text](https://raw.githubusercontent.com/anisul/sdsi/master/demo/demo2.PNG)
+![alt text](https://raw.githubusercontent.com/anisul/sdsi/master/demo/demo3.png)
 
 ## Built With
 * [Maven](https://maven.apache.org/) - Dependency Management
