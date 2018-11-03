@@ -101,5 +101,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * **[Prof. Evgeny Osipov](https://www.ltu.se/staff/e/eao-1.25221?l=en)**
-* **[Towfiqu Imam Mithu](https://github.com/muhammad-towfique-imam)** - My former Development Manager 
+* **[Towfiqu Imam Mithu](https://github.com/muhammad-towfique-imam)** - My former Development Manager to whom
+I'm ever grateful to teach me how proper coding. 
 
